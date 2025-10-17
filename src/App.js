@@ -4,22 +4,6 @@ import "./App.css"
 function App() {
   const [pokemons, setPokemons] = useState([])
   const [search, setSearch] = useState("")
-  const [paginate, SetPaginate] = useState(1)
-  const itemsPerPage = 8;
-  
-  const indexOfLastItem = paginate * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const paginateItems = pokemons.slice(indexOfFirstItem, indexOfLastItem)
-
-  const totalPage = Math.ceil(pokemons.length / itemsPerPage);
-
-  const nextPage = () => {
-    if ( paginate < totalPage) SetPaginate(paginate + 1);
-  }
-
-  const prevPage = () => {
-    if (paginate > 1) SetPaginate(paginate - 1);
-  }
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
@@ -35,7 +19,7 @@ function App() {
       <h1>Pokedex PWA</h1>
       <input type="text" placeholder="Buscar Pokémon" value={search} onChange={(e) => setSearch(e.target.value)}/>
       <div className="pokemon-grid">
-        {paginateItems
+        {pokemons
         .filter((p) => p.name.includes(search.toLowerCase()))
         .map((p, index) => {
           return(
@@ -48,15 +32,6 @@ function App() {
             </div>
           )
         })}
-      </div>
-      <div className="pagination">
-        <button onClick={prevPage} disabled={paginate === 1}>
-          Anterior
-        </button>
-        <span>Página {paginate} de {totalPage} </span>
-        <button onClick={nextPage} disabled={paginate === totalPage}>
-          Siguente
-        </button>
       </div>
     </div>
   );
