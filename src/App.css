@@ -81,3 +81,34 @@ input {
   color: #999;
   cursor: not-allowed;
 }
+
+.notify-btn {
+  background: linear-gradient(135deg, #ff7675, #d63031);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.6rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(214, 48, 49, 0.4);
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.notify-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 7px 14px rgba(214, 48, 49, 0.5);
+}
+
+.notify-btn:active {
+  transform: scale(0.95);
+}
+
+.notify-btn::before {
+  content: "🔔";
+  font-size: 1.2rem;
+}

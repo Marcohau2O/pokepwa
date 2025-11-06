@@ -26,6 +26,19 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SHOW_NOTIFICATION") {
+    const pokemonName = event.data.name || "Pokémon"
+
+    self.registration.showNotification("Pokédex actualizada", {
+      body: `¡${pokemonName} ha sido consultado!`,
+      icon: "/pokeball-192.png",
+      vibrate: [200, 100, 200],
+      tag: "poke-notify"
+    });
+  }
+});
+
 self.addEventListener('fetch', event => {
   const { request } = event;
 
