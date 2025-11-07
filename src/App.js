@@ -40,7 +40,7 @@ function App() {
     <div className="app">
       <h1>Pokedex PWA</h1>
       <button className="notify-btn" onClick={solicitarPermisoNotificaciones}>
-        Activar notificaciones
+        Activar - Notification
       </button>
       <input type="text" placeholder="Buscar Pokémon" value={search} onChange={(e) => setSearch(e.target.value)}/>
       <div className="pokemon-grid">
